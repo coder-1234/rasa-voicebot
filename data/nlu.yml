@@ -293,9 +293,15 @@ nlu:
     - [8209829808]{"entity":"number"} is my number
     - my mobile number is [8209829808]{"entity":"number"}
 
-- intent: feedback
+- intent: ask_feedback
+  examples: |
+    - my feedback is [good]{"entity":"feedback"}
+    - [good]{"entity":"feedback"}
 
 - intent: add_new_feature
+  examples: |
+    - [new_feature]{"entity":"feature"}
+    - add a feature for [new_feature]{"entity":"feature"}
 
 - intent: issues
   examples: |
@@ -310,7 +316,30 @@ nlu:
     
 - intent: issueshipping
   examples: |
-  - how many days it takes to receive 
-  - my ordershipping issue
-  - shipping issue
-  - shipping problem
+    - how many days it takes to receive the order
+    - my ordershipping issue
+    - shipping issue
+    - shipping problem
+
+- intent: ask_benefits
+  examples: |
+    - what are the benefits of applying credit cards?
+    - how are credit cards useful?
+    - benefits of credit cards
+    - tell me some benefits of credit cards.
+    - can you please explain the use of credit cards?
+    - advantages of credit cards
+
+- intent: tell_order_id
+  examples: |
+    - my order id is [2790973]{"entity":"order_id"}
+    - [2790973]{"entity":"order_id"}
+    - [2790973]{"entity":"order_id"} is my order id
+    - my order id is [2790973]{"entity":"order_id"}
+
+- intent: unpaid_creditdues
+  examples: |
+    - please show my credit card dues
+    - credit card dues
+    - show pending statements
+    - show pending credit card bills

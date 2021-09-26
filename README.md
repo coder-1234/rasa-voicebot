@@ -10,9 +10,13 @@ Run:
 pip install -r requirements.txt
 ```
 
+## Train the bot (if any changes done)
+
+Use `rasa train --debug` to train model.
+
 ## Run the bot
 
-Use `rasa run -m models --endpoints endpoints.yml --port 5002 --credentials credentials.yml` to train a model.
+Use `rasa run -m models --endpoints endpoints.yml --port 5002 --credentials credentials.yml` to run the trained model.
 
 
 In a seperate shell, run:

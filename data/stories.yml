@@ -2,29 +2,90 @@ version: "2.0"
 
 stories:
 
-- story: happy path
+- story: user provides feedback
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
+  - action: utter_ask_name
+  - intent: ask_name
+    entities: 
+    - name: "ashish"
+  - slot_was_set: 
+      - name: "ashish"
+  - action: utter_ask_feedback
+  - intent: ask_feedback
+  - action: utter_add_new_feature
+  - intent: add_new_feature
+  - action: utter_thank_you
+  - action: utter_anything_else
   - intent: deny
+  - action: utter_goodbye
+
+- story: user doesn't have any suggestions
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_feedback
+  - intent: ask_feedback
+  - action: utter_add_new_feature
+  - intent: deny
+  - action: utter_thank_you
+  - action: utter_anything_else
+  - intent: deny
+  - action: utter_goodbye
+
+- story: say ok when user affirms after utter_help
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: utter_help
+  - intent: affirm
+  
+- story: user wants creditcard
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_want_creditcard
+  - or:
+    - intent: affirm
+    - intent: ask_benefits
+  - action: utter_card_benefits
+
+- story: user doesn't want creditcard
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_want_creditcard
+  - intent: deny
+  - action: utter_dont_want_creditcard
+
+- story: user faces order issues related to shipping 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: issues
+  - action: utter_issues
+  - intent: issueshipping
+  - action: utter_order_id
+  - intent: tell_order_id
+    entities: 
+    - order_id: "2790973"
+  - slot_was_set: 
+      - order_id: "2790973"
+  - action: utter_connect_with_team
+  - intent: ask_email
+    entities: 
+    - email: "abc@gmail.com"
+  - slot_was_set: 
+      - email: "abc@gmail.com"
+  - action: utter_thanks_for_info
+ 
+- story: user faces order issues
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: unpaid_creditdues
+  - action: utter_unpaid_creditdues
+  - intent: goodbye
   - action: utter_goodbye

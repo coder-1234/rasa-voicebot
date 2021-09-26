@@ -5,23 +5,41 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
-  - ask_name:
-    use_entities:
-      - name
+  - thankyou
+  - help
+  - human_handoff
+  - out_of_scope
   - ask_email:
-    use_entities:
-      - email
-  - ask_mobile_number:
-    use_entities:
-      - number
+      use_entities: 
+        - email
+  - ask_name:
+      use_entities: 
+        - name
+  - ask_mobile_number: 
+      use_entities: 
+        - number
+  - ask_feedback:
+      use_entities: 
+        - feedback
+  - add_new_feature:
+      use_entities: 
+        - feature
+  - order_id:
+      use_entities:
+        - order_id
+  - issues
+  - issueshipping
+  - tell_order_id
+  - unpaid_creditdues
 
 entities:
   - email
   - name
   - number
+  - feedback
+  - feature
+  - order_id
 
 slots: 
   name:
@@ -30,14 +48,16 @@ slots:
     type: text
   email:
     type: text
+  feedback:
+    type: text
+  feature:
+    type: text
+  order_id:
+    type: text
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  - text: "Hey! How can help you?"
 
   utter_did_that_help:
   - text: "Did that help you?"
@@ -46,59 +66,65 @@ responses:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Bye, Have a nice Day!"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
   utter_ask_handoff:
-  - text: It looks like you want to be transferred to a human agent.
+  - text: "It looks like you want to be transferred to a human agent."
 
   utter_handoff:
-  - text: Alright, I'll try to transfer you.
+  - text: "Alright, I'll try to transfer you."
 
   utter_want_creditcard:
-  - text: Would you like to apply for a credit card?
+  - text: "Would you like to apply for a credit card?"
 
   utter_dont_want_creditcard:
-  - text: Alright, you can ask me about it anytime if you change your mind. 
+  - text: "Alright, you can ask me about it anytime if you change your mind." 
 
   utter_card_benefits: 
-  - text: Not one but you will get a basket full of benefits. Don't believe us. Then have a look. You will be automatically enrolled in the premium rewards program. Our rates are as low as 11.99% APR variable on purchases and cash advances. Get complimentary 24/7 concierge service 
+  - text: "Not one but you will get a basket full of benefits. Don't believe us. Then have a look. You will be automatically enrolled in the premium rewards program. Our rates are as low as 11.99% APR variable on purchases and cash advances. Get complimentary 24/7 concierge service."
 
   utter_connect_with_team:
-  - text: Let me connect you with our team for sharing the further process. Please provide your email id.
+  - text: "Let me connect you with our team for sharing the further process. Please provide your email id."
 
   utter_default:
-  - text: I didn't quite understand that. Could you rephrase?
+  - text: "I didn't quite understand that. Could you rephrase?"
 
-  utter_feedback:
-  - text: If you are free for a moment please tell your views on our latest feature of multilingual bot?
+  utter_ask_feedback:
+  - text: "If you are free for a moment please tell your views on our latest feature of multilingual bot?"
 
   utter_add_new_feature:
-  - text: Would you like to suggest any modifications for the feature?
+  - text: "Would you like to suggest any modifications for the feature?"
 
   utter_ask_name:
-  - text: Ok. Please provide your Name?
+  - text: "Please provide your Name?"
 
   utter_ask_email:
-  - text: Ok. Please provide your EMAIL ID?
+  - text: "Please provide your EMAIL ID?"
 
   utter_ask_mobile_number:
-  - text: Ok. Please provide your Mobile number?
+  - text: "Please provide your Mobile number?"
 
   utter_thanks_for_info:
-  - text: Thanks for providing the information.
+  - text: "Thanks for providing the information."
 
   utter_anything_else:
-  - text: Is there anything else I can help you with?
+  - text: "Is there anything else I can help you with?"
 
   utter_issues:
-  - text: kindly let me know your issue
+  - text: "kindly let me know your issue"
 
   utter_order_id:
-  - text: please let me know the order id
+  - text: "please let me know the order id"
+
+  utter_help:
+  - text: "I can help you with your financial needs. Selecting appropriate credit cards. addressing issues related to your orders.  providing information about unpaid credit dues and gathering your valuable feedback."
+  
+  utter_unpaid_creditdues:
+  - text: "Hi [name], I hope all is well. You have some credit card dues. kindly confirm that everything is ok. Mail us if you have any questions or concerns and respective reasons for delays at xyz@gmail.com. Some follow-ups are:- Try your best to make payments on time and in full to avoid a negative impact on your credit reports and keep your account in good standing. Avoid carrying a balance to save on interest charges. Either automate your payments or keep track of when they’re due. Thank you."
 
 session_config:
   session_expiration_time: 0
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
