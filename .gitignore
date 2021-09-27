@@ -1,17 +1,1 @@
 venv
-
-  - ask_email:
-    use_entities: 
-      - email
-  - ask_name:
-    use_entities: 
-      - name
-  - ask_mobile_number: 
-    use_entities: 
-      - number
-  - ask_feedback:
-    use_entities: 
-      - feedback
-  - add_new_feature:
-    use_entities: 
-      - feature
