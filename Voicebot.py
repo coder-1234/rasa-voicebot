@@ -3,31 +3,31 @@
 ## and also run this in seperate terminal
 ## rasa run actions
 
-from playsound import playsound
+from playsound_file import function_sound
 import requests
 import speech_recognition as sr  
-import subprocess
 from gtts import gTTS
 from translate import Translator
 
 lang = ['en','hi']
-option = input("Please select the language you prefer the bot should speak in? Type 0 for english 1 for hindi")
-if option not in '0' or '1':
+option = input("Please select the language you prefer the bot should speak in? Type 0 for english 1 for hindi ")
+if option not in '0' and option not in '1':
     option = '0'
 lang_selected = lang[int(option)]
 
 bot_message = ""
-message=""
+message = ""
 
-r = requests.post('http://localhost:5002/webhooks/rest/webhook', json={"message": "Hello"})
+r = requests.post('http://localhost:5002/webhooks/rest/webhook', json={"message": "hello"})
 
 for i in r.json():
     bot_message = i['text']
     print(f"{bot_message}")
 
-myobj = gTTS(text=bot_message,lang=lang_selected)
+translator = Translator(to_lang=lang_selected)
+myobj = gTTS(text=translator.translate(bot_message))
 myobj.save("welcome.mp3")
-playsound('welcome.mp3')
+function_sound()
 
 while bot_message != "Bye" or bot_message!='thanks':
 
@@ -42,10 +42,6 @@ while bot_message != "Bye" or bot_message!='thanks':
 
         except:
             print("Sorry could not recognize your voice") 
-            myobj = gTTS(text="Sorry could not recognize your voice",lang=lang_selected)
-            myobj.save("welcome.mp3")
-            playsound('welcome.mp3')
-
 
     if len(message)==0:
         continue
@@ -58,6 +54,7 @@ while bot_message != "Bye" or bot_message!='thanks':
         bot_message = i['text']
         print(f"{bot_message}")
 
-    myobj = gTTS(text=bot_message,lang=lang_selected)
+    translator = Translator(to_lang=lang_selected)
+    myobj = gTTS(text=translator.translate(bot_message))
     myobj.save("welcome.mp3")
-    playsound('welcome.mp3')
+    function_sound()

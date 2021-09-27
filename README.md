@@ -2,6 +2,14 @@
 
 This is an example voicebot demonstrating how to build AI assistants for financial services and banking. This starter pack can be used as a base for your own development or as a reference guide for implementing common banking-industry features with Rasa. It includes pre-built intents, actions, and stories for handling conversation flows like checking spending history and transferring money to another account.
 
+## Create a virtual environment
+
+Although it is not necessary but it is recommended to create a virtual enviroment which can be done by using the following command in the project folder
+Run:
+```bash
+python -m venv venv
+```
+To activate virtual enviroment go to venv/Scripts/ and run `activate`
 
 ## Install dependencies
 

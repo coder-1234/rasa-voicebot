@@ -72,6 +72,14 @@ nlu:
     - goodnight
     - gotta go
 
+
+- intent: tell_name
+  examples: |
+    - what is your name?
+    - tell me your name
+    - what others call you
+    - what should i call you?
+    
 - intent: affirm
   examples: |
     - indeed
@@ -159,7 +167,6 @@ nlu:
     - are you robot
     - are you sure that you're a bot?
     - bot?
-  
 
 - intent: thankyou
   examples: |

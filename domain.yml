@@ -4,6 +4,7 @@ intents:
   - greet
   - goodbye
   - affirm
+  - tell_name
   - deny
   - bot_challenge
   - thankyou
@@ -32,6 +33,7 @@ intents:
   - issueshipping
   - tell_order_id
   - unpaid_creditdues
+  - ask_benefits
 
 entities:
   - email
@@ -57,7 +59,7 @@ slots:
 
 responses:
   utter_greet:
-  - text: "Hey! How can help you?"
+  - text: "Hey! How can I help you?"
 
   utter_did_that_help:
   - text: "Did that help you?"
@@ -66,10 +68,13 @@ responses:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye, Have a nice Day!"
+  - text: "Bye"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_name:
+  - text: "My name is Innovate Yourself."
 
   utter_ask_handoff:
   - text: "It looks like you want to be transferred to a human agent."
@@ -89,9 +94,6 @@ responses:
   utter_connect_with_team:
   - text: "Let me connect you with our team for sharing the further process. Please provide your email id."
 
-  utter_default:
-  - text: "I didn't quite understand that. Could you rephrase?"
-
   utter_ask_feedback:
   - text: "If you are free for a moment please tell your views on our latest feature of multilingual bot?"
 
@@ -110,6 +112,9 @@ responses:
   utter_thanks_for_info:
   - text: "Thanks for providing the information."
 
+  utter_thank_you:
+  - text: "Thanks for providing the feedback."
+
   utter_anything_else:
   - text: "Is there anything else I can help you with?"
 
@@ -123,8 +128,11 @@ responses:
   - text: "I can help you with your financial needs. Selecting appropriate credit cards. addressing issues related to your orders.  providing information about unpaid credit dues and gathering your valuable feedback."
   
   utter_unpaid_creditdues:
-  - text: "Hi [name], I hope all is well. You have some credit card dues. kindly confirm that everything is ok. Mail us if you have any questions or concerns and respective reasons for delays at xyz@gmail.com. Some follow-ups are:- Try your best to make payments on time and in full to avoid a negative impact on your credit reports and keep your account in good standing. Avoid carrying a balance to save on interest charges. Either automate your payments or keep track of when they’re due. Thank you."
+  - text: "Hi, I hope all is well. You have some credit card dues. kindly confirm that everything is ok. Mail us if you have any questions or concerns and respective reasons for delays at xyz@gmail.com. Some follow-ups are:- Try your best to make payments on time and in full to avoid a negative impact on your credit reports and keep your account in good standing. Avoid carrying a balance to save on interest charges. Either automate your payments or keep track of when they’re due. Thank you."
 
+  utter_default:
+  - text: "Could not understand. Please rephrase"
+  
 session_config:
   session_expiration_time: 0
-  carry_over_slots_to_new_session: false
+  carry_over_slots_to_new_session: true

@@ -2,6 +2,13 @@ version: "2.0"
 
 stories:
 
+- story: user ask name
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: tell_name
+  - action: utter_name
+
 - story: user provides feedback
   steps:
   - intent: greet
@@ -81,7 +88,7 @@ stories:
       - email: "abc@gmail.com"
   - action: utter_thanks_for_info
  
-- story: user faces order issues
+- story: user has unpaid credit dues
   steps:
   - intent: greet
   - action: utter_greet
